@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -43,6 +44,15 @@ if (! function_exists('dump_sql')) {
         });
 
         return $sql;
+    }
+}
+
+if (! function_exists('faker')) {
+    function faker($property = null)
+    {
+        $faker = Factory::create();
+
+        return $property ? $faker->{$property} : $faker;
     }
 }
 

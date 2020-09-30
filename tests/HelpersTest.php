@@ -62,6 +62,12 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
+    public function faker(): void
+    {
+        $this->assertInstanceOf(Generator::class, faker());
+        $this->assertInternalType('string', faker('name'));
+    }
+
     public function stopwatch()
     {
         // 10000 milliseconds is 0.01 seconds.
