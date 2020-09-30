@@ -62,10 +62,12 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    function stopwatch()
+    public function stopwatch()
     {
         // 10000 milliseconds is 0.01 seconds.
-        $time = stopwatch(function () { usleep(10000); });
+        $time = stopwatch(function () {
+            usleep(10000);
+        });
 
         $this->assertEquals(0.01, round($time, 2));
     }
