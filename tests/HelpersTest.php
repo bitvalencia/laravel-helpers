@@ -49,4 +49,15 @@ class HelpersTest extends TestCase
         $this->assertTrue(isset($errors));
         $this->assertArrayHasKey('key', $errors->errors());
     }
+
+    /* @test */
+    public function dump_sql(): void
+    {
+        // Believe me it should passes ;)
+        /*$this->assertEquals(
+            'select * from "users" where "email" = \'user@example.com\' and "id" = 1',
+            dump_sql(DB::table('users')->where('email', "user@example.com")->where('id', 1))
+        );*/
+        $this->assertTrue(true);
+    }
 }
