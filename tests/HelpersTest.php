@@ -80,9 +80,10 @@ class HelpersTest extends TestCase
     }
 
     /* @test */
-    function str_between()
+    public function str_between()
     {
-        $this->assertEquals('something',
+        $this->assertEquals(
+            'something',
             str_between('before something after', 'before ', ' after')
         );
     }

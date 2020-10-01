@@ -2,8 +2,8 @@
 
 use Faker\Factory;
 use Illuminate\Support\Carbon;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 if (! function_exists('carbon')) {
     function carbon(...$args)
