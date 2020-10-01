@@ -65,6 +65,16 @@ stopwatch(function () {
 }); // returns "2.0"
 ```
 
+**str_between**
+
+ ```php
+str_between('--thing--', '--'); // returns "thing"
+str_between('[thing]', '[', ']'); // returns "thing"
+
+Str::between('--thing--', '--'); // returns "thing"
+Str::between('[thing]', '[', ']'); // returns "thing"
+ ```
+
 ## Testing
 
 ``` bash
