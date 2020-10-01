@@ -107,4 +107,10 @@ class HelpersTest extends TestCase
             ['$12', 12, false, 'en_US.utf-8'],
         ];
     }
+
+    /** @test */
+    public function str_wrap()
+    {
+        $this->assertEquals('--something--', str_wrap('something', '--'));
+    }
 }
