@@ -109,7 +109,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    function str_wrap()
+    public function str_wrap()
     {
         $this->assertEquals('--something--', str_wrap('something', '--'));
     }
