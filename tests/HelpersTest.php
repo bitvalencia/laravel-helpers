@@ -87,4 +87,24 @@ class HelpersTest extends TestCase
             str_between('before something after', 'before ', ' after')
         );
     }
+
+    /* @test
+     * @dataProvider moneyProvider
+    */
+    public function money($expected, $input, $showCents, $locale)
+    {
+        $this->assertEquals($expected, money($input, $showCents, $locale));
+    }
+
+    public function moneyProvider()
+    {
+        return [
+            ['$12.00', 12, true, 'en_US.utf-8'],
+            ['$12.00', 12.00, true, 'en_US.utf-8'],
+            ['$12.00', 12.004, true, 'en_US.utf-8'],
+            ['$12.01', 12.01, true, 'en_US.utf-8'],
+            ['$1,200.00', 1200.00, true, 'en_US.utf-8'],
+            ['$12', 12, false, 'en_US.utf-8'],
+        ];
+    }
 }
