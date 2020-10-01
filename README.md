@@ -40,6 +40,31 @@ Returns an HTTP 422 response (Validation Error).
 fail_validation('key', 'message');
 ```
 
+**dump_sql**
+
+Returns sql query with bindings data.
+```php
+dump_sql(\DB::table('users')->where('email', "blaBla")->where('id', 1)); 
+// returns "select * from `users` where `email` = 'blaBla' and `id` = 1"
+```
+
+**faker**
+
+Shortcut for: $faker = Faker\Factory::create()
+ ```php
+faker()->address; // returns random, fake address
+faker('address'); // alternate syntax
+```
+
+**stopwatch**
+
+Returns the amount of time (in seconds) the provided callback took to execute. Useful for debugging and profiling.
+```php
+stopwatch(function () {
+    sleep(2);
+}); // returns "2.0"
+```
+
 ## Testing
 
 ``` bash
