@@ -64,8 +64,7 @@ class HelpersTest extends TestCase
     /** @test */
     public function faker(): void
     {
-        $this->assertInstanceOf(Generator::class, faker());
-        $this->assertInternalType('string', faker('name'));
+        $this->assertIsString(faker('name'));
     }
 
     /* @test */
