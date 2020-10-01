@@ -93,3 +93,10 @@ if (! function_exists('money')) {
         return numfmt_format_currency($formatter, $input, trim(localeconv()['int_curr_symbol']));
     }
 }
+
+if (! function_exists('str_wrap')) {
+    function str_wrap($value, $cap)
+    {
+        return Str::wrap($value, $cap);
+    }
+}

@@ -85,6 +85,14 @@ echo money(12.75, true, 'en_GB'); // echos "£12.75"
 ```
 Note: unless specified otherwise, money() will detect the current locale.
 
+**str_wrap**
+
+```php
+str_wrap('thing', '--'); // returns "--thing--"
+
+Str::wrap('thing', '--'); // returns "--thing--"
+```
+
 ## Testing
 
 ``` bash
