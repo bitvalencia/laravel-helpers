@@ -3,6 +3,7 @@
 use Faker\Factory;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 if (! function_exists('carbon')) {
     function carbon(...$args)
@@ -70,5 +71,13 @@ if (! function_exists('stopwatch')) {
         }
 
         return $totalTime / $times;
+    }
+}
+
+
+if (! function_exists('str_between')) {
+    function str_between($subject, $beginning, $end = null)
+    {
+        return Str::between($subject, $beginning, $end);
     }
 }

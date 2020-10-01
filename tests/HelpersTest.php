@@ -68,6 +68,7 @@ class HelpersTest extends TestCase
         $this->assertInternalType('string', faker('name'));
     }
 
+    /* @test */
     public function stopwatch()
     {
         // 10000 milliseconds is 0.01 seconds.
@@ -76,5 +77,13 @@ class HelpersTest extends TestCase
         });
 
         $this->assertEquals(0.01, round($time, 2));
+    }
+
+    /* @test */
+    function str_between()
+    {
+        $this->assertEquals('something',
+            str_between('before something after', 'before ', ' after')
+        );
     }
 }
