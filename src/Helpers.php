@@ -77,7 +77,11 @@ if (! function_exists('stopwatch')) {
 if (! function_exists('str_between')) {
     function str_between($subject, $beginning, $end = null)
     {
-        return Str::between($subject, $beginning, $end);
+        if (is_null($end)) {
+            $end = $beginning;
+        }
+
+        return Str::before(Str::after($subject, $beginning), $end);
     }
 }
 if (! function_exists('money')) {
@@ -97,6 +101,6 @@ if (! function_exists('money')) {
 if (! function_exists('str_wrap')) {
     function str_wrap($value, $cap)
     {
-        return Str::wrap($value, $cap);
+        return Str::start(Str::finish($value, $cap), $cap);
     }
 }
