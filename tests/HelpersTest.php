@@ -7,17 +7,19 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class HelpersTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function carbon(): void
     {
         $this->assertInstanceOf(Carbon::class, carbon());
         $this->assertEquals(Carbon::parse('Jan 1 2020'), carbon('Jan 1 2020'));
     }
 
-    /** @test */
+    #[Test]
     public function user(): void
     {
         $this->assertNull(user());
@@ -25,7 +27,7 @@ class HelpersTest extends TestCase
         $this->assertEquals($user, user());
     }
 
-    /** @test */
+    #[Test]
     public function ok(): void
     {
         $this->assertInstanceOf(Response::class, $ok = ok());
@@ -35,7 +37,7 @@ class HelpersTest extends TestCase
         $this->assertSame('bar', ok(['foo' => 'bar'])->headers->get('foo'));
     }
 
-    /** @test */
+    #[Test]
     public function fail_validation(): void
     {
         $errors = [];
@@ -50,7 +52,7 @@ class HelpersTest extends TestCase
         $this->assertArrayHasKey('key', $errors->errors());
     }
 
-    /* @test */
+    #[Test]
     public function dump_sql(): void
     {
         // Believe me it should passes ;)
@@ -61,13 +63,13 @@ class HelpersTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /** @test */
+    #[Test]
     public function faker(): void
     {
         $this->assertIsString(faker('name'));
     }
 
-    /* @test */
+    #[Test]
     public function stopwatch()
     {
         // 10000 milliseconds is 0.01 seconds.
@@ -78,7 +80,7 @@ class HelpersTest extends TestCase
         $this->assertEquals(0.01, round($time, 2));
     }
 
-    /* @test */
+    #[Test]
     public function str_between()
     {
         $this->assertEquals(
@@ -87,15 +89,14 @@ class HelpersTest extends TestCase
         );
     }
 
-    /* @test
-     * @dataProvider moneyProvider
-    */
+    #[Test]
+    #[DataProvider('moneyProvider')]
     public function money($expected, $input, $showCents, $locale)
     {
         $this->assertEquals($expected, money($input, $showCents, $locale));
     }
 
-    public function moneyProvider()
+    public static function moneyProvider()
     {
         return [
             ['$12.00', 12, true, 'en_US.utf-8'],
@@ -107,7 +108,7 @@ class HelpersTest extends TestCase
         ];
     }
 
-    /** @test */
+    #[Test]
     public function str_wrap()
     {
         $this->assertEquals('--something--', str_wrap('something', '--'));
